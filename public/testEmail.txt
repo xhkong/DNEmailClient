@@ -1,0 +1,151 @@
+Return-Path: <tempesink@gmail.com>
+Received: from mail-yb1-f181.google.com (mail-yb1-f181.google.com [209.85.219.181])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id 13p64ui5i0dm6pof1ausi6j4qkq9llpgtf844v01
+ for internship@diversitymedianetwork.com;
+ Fri, 25 Oct 2024 05:36:08 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.219.181 as permitted sender) client-ip=209.85.219.181; envelope-from=tempesink@gmail.com; helo=mail-yb1-f181.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.219.181 as permitted sender) client-ip=209.85.219.181; envelope-from=tempesink@gmail.com; helo=mail-yb1-f181.google.com;
+ dkim=pass header.i=@gmail.com;
+ dmarc=pass header.from=gmail.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFHVXdVUmpaUmZGenAybjBGZUFMM2dkeGlBbDVndTFGRDEvS3hsdnp2b1FSZEpiZ1pEWXVrZ0U2cXdGd2JqSkpSWVJxQ2VDYzczb1djdkNpNGEyVEIrREZIaE9JUit2T0pVVzRMK2RUSVlUTGtzbGVvT0lJa1FaU3FVZm1sbjdNWnB2Q0xwQ1NSblBGMUNCbTdVL0lqUUFJWjN2eHM3blhoaStnRmdybU8xOFhzRFRTd3BVRGFUczB4a0YxOTRPQzVETjM0cUdaZm9odzE5S0IzbFRzTGtMbHBZeENBSVFyUlo4UHBPdnJCWDZxeEhKRnJOODFqNTJHUW94bzRwdlZ0MGZqbjVXbU5ZeXAvbEtrTWpmZHVWdzU2NytpWC9kVm1xUjk5UEtqMHF2SXc9PQ==
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=sQr2Oz9Y9yAzE1QZ2YBbEXBI0ymQ6GPygfKOednGnJ6jenFi2I4IwG2YSZF8HrE34zwkgd2K+fhzq03kTgDy86/3fb7YuRvZum72ePj3iKefxFvEvJTcFGrkVKixcHHpgoS+lCp9Bwgnen2M7l6LJu1tMdgMz//u84kMkC/BrUM=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1729834569; v=1; bh=ZCnTmh0euFoPWNoyfGdK17kTrxynEfxeqatW9iciUb0=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-yb1-f181.google.com with SMTP id 3f1490d57ef6-e28fd83b5bbso1862389276.0
+        for <internship@diversitymedianetwork.com>; Thu, 24 Oct 2024 22:36:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729834568; x=1730439368; darn=diversitymedianetwork.com;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZCnTmh0euFoPWNoyfGdK17kTrxynEfxeqatW9iciUb0=;
+        b=jiwvBrVX80seB2BBdhaeEAV7uK3kT2agjblT8f0rmbyRGT/IFVdNj9F7x9IcDJ21+w
+         beW56BVZofTNWuaNhhOZgVcx5oGbeyzYoydorRLSpHvqxEtB+ZdkPAtetJZ5k70091RH
+         joqid0Gmf8ajLGdArE4hUqzKleylWAxiMsBK8IuNcEwT55IHwCkJAg7vzro3WW/TjMjd
+         YpTfTMtTqC4iaMPX1VXUO9LoO1Q+l5B6p0NjieJDCu+IoihwqL4hVE0+G4CObma+UR3x
+         RF/KXKe786uAg8p0dLvrckUKamhaht3agERa8pfQQZSULGk1IJQPZPUxRFypGVxQaoiN
+         8fFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729834568; x=1730439368;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZCnTmh0euFoPWNoyfGdK17kTrxynEfxeqatW9iciUb0=;
+        b=f5+3vvhZeAbezBWrJosxppGdpBcSjrusNjLlk3oGWQ9lwufv2Ypd8DIM4Am1ZdRhRM
+         0jQICVcicXsABOSQhVWNqAGo7+/K7C4yiBR88PiDaAyDL6SFaIutU/F2wUV8DcM9muEK
+         rv3573NjBmOn+nQ74ncGj9Q+LhMyVx9NDaGywPR2pgv3Xo2GIcKoLAvHVYgSVJzxHXrH
+         k9HFK2mXoi9SJJhwU/XB6XLowpBGmLRVd8/Gw+1/tgwLcKSaMlLwE2jXfQC8RAnuxwUS
+         Go7cQKHYkcvXWZea38O/4CqpjtTg7mFLztYzGt7gzNW6jKEYk1Qqqg3hmW9dbC+gSCTS
+         1VWA==
+X-Gm-Message-State: AOJu0Yzv/QoNMfYWxMz4GRWq04LWhZGYZ6lUMA8jHoiATl42cHqzN1R3
+	r/kRms7VEN4RXlsJP7lSe3cUWvd1n+4vl10PoYc8I7oOmOrolQcz3s46ci3IyqWB1f6uLRR28HG
+	JEwGVK1wRpdZwAilI9tq+y0ZreQX1xQ==
+X-Google-Smtp-Source: AGHT+IHz3Uf3TEx0u9NGA9PMtu2qvAzswk0w8FARb8GT1HNujdGnLMSl6DOcuR4IMJ1vBQQLaglHegkwJ9vMa97F2HE=
+X-Received: by 2002:a05:622a:255:b0:458:3a5a:94c5 with SMTP id
+ d75a77b69052e-461145a5911mr110482781cf.1.1729834125475; Thu, 24 Oct 2024
+ 22:28:45 -0700 (PDT)
+MIME-Version: 1.0
+References: <01000192c21f18bb-304a2a99-61a0-4340-84e0-c52a91524eeb-000000@email.amazonses.com>
+In-Reply-To: <01000192c21f18bb-304a2a99-61a0-4340-84e0-c52a91524eeb-000000@email.amazonses.com>
+From: Temp E <tempesink@gmail.com>
+Date: Fri, 25 Oct 2024 00:28:31 -0500
+Message-ID: <CABhK3P_UKLkWdt_sgWkPRfcPkT8aA3eBYjOo2bFP3JFpYkLaNQ@mail.gmail.com>
+Subject: Re: Invitation to Join Our 7-Day Internship Program at Diversity
+ Media Network
+To: internship@diversitymedianetwork.com
+Content-Type: multipart/alternative; boundary="00000000000091c57c06254664e1"
+
+--00000000000091c57c06254664e1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Test Reply
+
+On Fri, Oct 25, 2024 at 12:21=E2=80=AFAM <internship@diversitymedianetwork.=
+com>
+wrote:
+
+>
+> Dear [Candidate_Name],
+>
+> We are pleased to inform you that you have been selected to participate i=
+n
+> our 7-day new journalist internship program at Diversity Media Network.
+> This program is designed to provide training and first-hand experience in
+> journalism for individuals without a journalism background but interested
+> in starting a career as a journalist.
+>
+> The internship will take place from [Start_Date] to [End_Date], and will
+> include a variety of activities such as workshops, networking events,
+> project work, and conducting real-world interviews. You will have the
+> opportunity to work alongside our experienced team and gain valuable skil=
+ls
+> as a new journalist. The internship requires a commitment of 3 hours per
+> day for 7 days, with flexible hours, and it will be conducted remotely.
+> There is no cost to participate in this internship besides your time
+> commitment.
+>
+> Please confirm your participation by replying to this email by
+> [Confirmation Deadline]. We look forward to welcoming you to our team and
+> helping you grow your professional skills.
+>
+> Best regards,
+>
+> Internship Program
+> Diversity Media Network
+>
+>
+> This internship is highly selective, and we have a limited number of spot=
+s
+> available. If you are unable to commit to the required time, please let u=
+s
+> know as soon as possible so that we can offer this opportunity to the nex=
+t
+> candidate in line. A return offer is not guaranteed, and candidates will =
+be
+> evaluated based on performance at the end of the internship program.
+>
+
+--00000000000091c57c06254664e1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Test Reply</div><br><div class=3D"gmail_quote"><div dir=3D=
+"ltr" class=3D"gmail_attr">On Fri, Oct 25, 2024 at 12:21=E2=80=AFAM &lt;<a =
+href=3D"mailto:internship@diversitymedianetwork.com">internship@diversityme=
+dianetwork.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex"><br>
+Dear [Candidate_Name],<br>
+<br>
+We are pleased to inform you that you have been selected to participate in =
+our 7-day new journalist internship program at Diversity Media Network. Thi=
+s program is designed to provide training and first-hand experience in jour=
+nalism for individuals without a journalism background but interested in st=
+arting a career as a journalist.<br>
+<br>
+The internship will take place from [Start_Date] to [End_Date], and will in=
+clude a variety of activities such as workshops, networking events, project=
+ work, and conducting real-world interviews. You will have the opportunity =
+to work alongside our experienced team and gain valuable skills as a new jo=
+urnalist. The internship requires a commitment of 3 hours per day for 7 day=
+s, with flexible hours, and it will be conducted remotely. There is no cost=
+ to participate in this internship besides your time commitment.<br>
+<br>
+Please confirm your participation by replying to this email by [Confirmatio=
+n Deadline]. We look forward to welcoming you to our team and helping you g=
+row your professional skills.<br>
+<br>
+Best regards,<br>
+<br>
+Internship Program<br>
+Diversity Media Network=C2=A0 <br>
+<br>
+<br>
+This internship is highly selective, and we have a limited number of spots =
+available. If you are unable to commit to the required time, please let us =
+know as soon as possible so that we can offer this opportunity to the next =
+candidate in line. A return offer is not guaranteed, and candidates will be=
+ evaluated based on performance at the end of the internship program.<br>
+</blockquote></div>
+
+--00000000000091c57c06254664e1--
